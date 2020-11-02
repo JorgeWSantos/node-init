@@ -1,8 +1,10 @@
 const express = require('express');
-const { uuid} = require('uuidv4');
+const { uuid } = require('uuidv4');
 const { validate } = require('uuid');
+const cors = require('cors');
 
 const app = express();
+app.use(cors());
 
 app.use(express.json())
 
@@ -89,8 +91,6 @@ app.delete('/projects/:id', (request, response) => {
     }
 
     projects.splice(projectIndex, 1);
-
-    console.log(id)
 
     return response.status(204).send();
 })
